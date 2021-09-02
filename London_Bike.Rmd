@@ -1,0 +1,66 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+#Clearning London Data
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+Data Overview
+```{r}
+#london = read.csv(file = file.choose()) #london
+london = as.data.frame(london)
+london
+```
+Weather_code
+```{r}
+london$weather_code[london$weather_code == 1] = "clear"
+london$weather_code[london$weather_code == 2] = "few clouds"
+london$weather_code[london$weather_code == 3] = "Broken clouds"
+london$weather_code[london$weather_code == 4] = "Cloudy"
+london$weather_code[london$weather_code == 7] = "Light Rain"
+london$weather_code[london$weather_code == 10] = "rain with thunderstorm"
+london$weather_code[london$weather_code == 26] = "snowfall"
+london$weather_code[london$weather_code == 94] = "Fresszing Fog"
+london
+```
+
+holiday
+```{r}
+london$is_holiday[london$is_holiday == 1] = "Holiday"
+london$is_holiday[london$is_holiday == 0] = "Non-Holiday"
+london
+
+```
+
+weekend
+```{r}
+london$is_weekend[london$is_weekend == 1] = "weekend"
+london$is_weekend[london$is_weekend == 0] = "weekday"
+london
+```
+
+season
+```{r}
+london$season[london$season == 0] = "Spring"
+london$season[london$season == 1] = "Summer"
+london$season[london$season == 2] = "Autumn"
+london$season[london$season == 3] = "Winter"
+london
+```
+
+```{r}
+write.csv(london,"/Users/aqumon/Desktop/Data Science/Data Analytics and Visualization/Project/ETL Project.csv", row.names = FALSE)
+```
+
